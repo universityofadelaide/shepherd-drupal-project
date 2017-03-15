@@ -45,7 +45,7 @@ class ScriptHandler {
     // Append Shepherd-specific environment variable settings to settings.php.
     file_put_contents(
       $root . '/sites/default/settings.php',
-      "\n/**\n * START DATABASE CONFIG \n */\n" .
+      "\n/**\n * START SHEPHERD CONFIG \n */\n" .
       "\$databases['default']['default'] = array (\n" .
       "  'database' => getenv('DATABASE_NAME'),\n" .
       "  'username' => getenv('DATABASE_USER'),\n" .
@@ -55,8 +55,9 @@ class ScriptHandler {
       "  'driver' => (getenv('DATABASE_DRIVER') ?: 'mysql'),\n" .
       "  'prefix' => getenv('DATABASE_PREFIX'),\n" .
       "  'collation' => (getenv('DATABASE_COLLATION') ?: 'utf8mb4_general_ci'),\n" .
-      "}\n" .
-      "/**\n * END DATABASE CONFIG \n */\n\n",
+      ");\n" .
+      "\$settings['file_private_path'] = getenv('PRIVATE_DIR');\n" .
+      "/**\n * END SHEPHERD CONFIG \n */\n\n",
       FILE_APPEND
     );
 

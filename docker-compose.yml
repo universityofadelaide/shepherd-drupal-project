@@ -1,0 +1,30 @@
+version: '2'
+services:
+  web:
+    image: uofa/apache2-php7:shepherd
+    ports:
+      - "80:80"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_NAME: drupal
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      WEB_PATH: /path
+      PRIVATE_DIR: /shared/private
+      PUBLIC_DIR: web/sites/default/files
+    volumes:
+      - .:/code
+      - shared:/shared
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: super-secret-password
+volumes:
+  public:
+  private:
