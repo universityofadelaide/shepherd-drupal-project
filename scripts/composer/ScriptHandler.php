@@ -44,7 +44,7 @@ class ScriptHandler {
       // Append Shepherd-specific environment variable settings to settings.php.
       file_put_contents(
         $root . '/sites/default/settings.php',
-        "\n/**\n * START SHEPHERD CONFIG \n */\n" .
+        "\n/**\n * START SHEPHERD CONFIG\n */\n" .
         "\$databases['default']['default'] = array (\n" .
         "  'database' => getenv('DATABASE_NAME'),\n" .
         "  'username' => getenv('DATABASE_USER'),\n" .
@@ -57,18 +57,18 @@ class ScriptHandler {
         "  'namespace' => getenv('DATABASE_NAMESPACE') ?: 'Drupal\\\\Core\\\\Database\\\\Driver\\\\mysql',\n" .
         ");\n" .
         "\$settings['file_private_path'] = getenv('PRIVATE_DIR');\n" .
-        "/**\n * END SHEPHERD CONFIG \n */\n\n",
+        "/**\n * END SHEPHERD CONFIG\n */\n\n",
         FILE_APPEND
       );
 
       // Append inclusion of settings.local.php to settings.php.
       file_put_contents(
         $root . '/sites/default/settings.php',
-        "/**\n * START LOCAL CONFIG \n */\n" .
+        "/**\n * START LOCAL CONFIG\n */\n" .
         "if (file_exists(__DIR__ . '/settings.local.php')) {\n" .
         "  include __DIR__ . '/settings.local.php';\n" .
         "}\n" .
-        "/**\n * END LOCAL CONFIG \n */\n\n",
+        "/**\n * END LOCAL CONFIG\n */\n\n",
         FILE_APPEND
       );
 
