@@ -60,6 +60,10 @@ class ScriptHandler {
         "\$settings['hash_salt'] = getenv('HASH_SALT') ?: '" . str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55))) . "';\n" .
         "\$config_directories['sync'] = getenv('CONFIG_SYNC_DIRECTORY') ?: 'sites/default/files/config_" . str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(random_bytes(55))) . "/sync';\n" .
         "if (! is_dir(\$app_root . '/' . \$config_directories['sync'])) mkdir(\$app_root . '/' . \$config_directories['sync'], 0777, true);\n" .
+        "preg_match_all('/^SHP_[A-Z0-9_]*/m', shell_exec('env'), \$shp_matches);\n" .
+        "foreach(reset(\$shp_matches) as \$env_var) {\n" .
+        "  \$settings[strtolower(\$env_var)] = getenv(\$env_var);\n" .
+        "}\n" .
         "/**\n * END SHEPHERD CONFIG\n */\n\n",
         FILE_APPEND
       );
