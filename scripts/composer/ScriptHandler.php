@@ -63,11 +63,6 @@ class ScriptHandler {
         "\$settings['shepherd_site_id'] = getenv('SHEPHERD_SITE_ID');\n" .
         "\$settings['shepherd_url'] = getenv('SHEPHERD_URL');\n" .
         "\$settings['shepherd_token'] = getenv('SHEPHERD_TOKEN_FILE') ? file_get_contents(getenv('SHEPHERD_TOKEN_FILE')) : getenv('SHEPHERD_TOKEN');\n" .
-        "preg_match_all('/^SHP_[A-Z0-9_]*/m', shell_exec('env'), \$shp_matches);\n" .
-        "\$settings['shepherd'] = [];\n"
-        "foreach(reset(\$shp_matches) as \$env_var) {\n" .
-        "  \$settings['shepherd'][strtolower(\$env_var)] = getenv(\$env_var);\n" .
-        "}\n" .
         "/**\n * END SHEPHERD CONFIG\n */\n\n",
         FILE_APPEND
       );
