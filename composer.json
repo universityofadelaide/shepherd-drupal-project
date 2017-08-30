@@ -18,7 +18,7 @@
   "require": {
     "composer/installers": "^1.2",
     "drupal-composer/drupal-scaffold": "^2.2",
-    "universityofadelaide/shepherd-drupal-scaffold": "dev-consolidate-scaffolding",
+    "universityofadelaide/shepherd-drupal-scaffold": "^1.0",
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~8.0",
     "drush/drush": "~8.0",
