@@ -39,13 +39,14 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
-      "bin-dir": "bin/"
+    "bin-dir": "bin/"
   },
   "scripts": {
     "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "shepherd-scaffold": "UniversityOfAdelaide\\ShepherdDrupalScaffold\\Plugin::scaffold",
     "post-install-cmd": [
-      "@drupal-scaffold"
+      "@drupal-scaffold",
+      "@shepherd-scaffold"
     ]
   },
   "extra": {
