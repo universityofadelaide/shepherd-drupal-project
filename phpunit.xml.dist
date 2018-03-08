@@ -6,7 +6,7 @@
          colors="true"
          bootstrap="vendor/autoload.php"
          verbose="true"
-        >
+>
     <testsuites>
         <testsuite name="drupal-composer-project tests">
             <directory>./test/</directory>
