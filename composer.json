@@ -1,71 +1,77 @@
 {
-  "name": "universityofadelaide/shepherd-drupal-project",
-  "description": "Project template for Shepherd Drupal 8 projects with composer.",
-  "type": "project",
-  "license": "GPL-2.0+",
-  "authors": [
-    {
-      "name": "",
-      "role": ""
-    }
-  ],
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.drupal.org/8"
-    }
-  ],
-  "require": {
-    "composer/installers": "^1.2",
-    "cweagans/composer-patches": "^1.6",
-    "drupal-composer/drupal-scaffold": "^2.2",
-    "universityofadelaide/shepherd-drupal-scaffold": "~1.0",
-    "drupal/console": "^1.0.2",
-    "drupal/core": "~8.4",
-    "drush/drush": "~8.0|^9.0.0-beta8",
-    "webflo/drupal-finder": "^1.0.0",
-    "webmozart/path-util": "^2.3"
-  },
-  "require-dev": {
-    "behat/mink": "~1.7",
-    "behat/mink-goutte-driver": "~1.2",
-    "jcalderonzumba/gastonjs": "~1.0.2",
-    "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-    "mikey179/vfsStream": "~1.2",
-    "phpunit/phpunit": ">=4.8.28 <5",
-    "symfony/css-selector": "~2.8|~3.0"
-  },
-  "conflict": {
-    "drupal/drupal": "*"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "config": {
-    "bin-dir": "bin/",
-    "sort-packages": true
-  },
-  "scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-    "shepherd-scaffold": "UniversityOfAdelaide\\ShepherdDrupalScaffold\\Plugin::scaffold",
-    "post-install-cmd": [
-      "@drupal-scaffold",
-      "@shepherd-scaffold"
-    ]
-  },
-  "extra": {
-    "installer-paths": {
-      "web/core":                     ["type:drupal-core"],
-      "web/libraries/{$name}":        ["type:drupal-library"],
-      "web/modules/contrib/{$name}":  ["type:drupal-module"],
-      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-      "web/themes/contrib/{$name}":   ["type:drupal-theme"],
-      "drush/contrib/{$name}":        ["type:drupal-drush"]
+    "name":              "universityofadelaide/shepherd-drupal-project",
+    "description":       "Project template for Shepherd Drupal 8 projects with composer.",
+    "type":              "project",
+    "license":           "GPL-2.0+",
+    "authors":           [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories":      [
+        {
+            "type": "composer",
+            "url":  "https://packages.drupal.org/8"
+        }
+    ],
+    "require":           {
+        "composer/installers":                           "^1.2",
+        "cweagans/composer-patches":                     "^1.6",
+        "drupal-composer/drupal-scaffold":               "^2.2",
+        "universityofadelaide/shepherd-drupal-scaffold": "~1.0",
+        "drupal/console":                                "^1.0.2",
+        "drupal/core":                                   "~8.5",
+        "drush/drush":                                   "^9.0.0",
+        "webflo/drupal-finder":                          "^1.0.0",
+        "webmozart/path-util":                           "^2.3"
     },
-    "drupal-scaffold": {
-      "initial": {
-        "sites/default/default.services.yml": "sites/default/services.yml",
-        "sites/default/default.settings.php": "sites/default/settings.php"
-      }
+    "require-dev":       {
+        "webflo/drupal-core-require-dev": "~8.5"
+    },
+    "conflict":          {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable":     true,
+    "config":            {
+        "bin-dir":       "bin/",
+        "sort-packages": true
+    },
+    "scripts":           {
+        "drupal-scaffold":   "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "shepherd-scaffold": "UniversityOfAdelaide\\ShepherdDrupalScaffold\\Plugin::scaffold",
+        "post-install-cmd":  [
+            "@drupal-scaffold",
+            "@shepherd-scaffold"
+        ]
+    },
+    "extra":             {
+        "installer-paths": {
+            "web/core":                     [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}":        [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}":  [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}":   [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}":        [
+                "type:drupal-drush"
+            ]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                "sites/default/default.services.yml": "sites/default/services.yml",
+                "sites/default/default.settings.php": "sites/default/settings.php"
+            }
+        }
     }
-  }
 }
