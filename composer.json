@@ -2,7 +2,7 @@
     "name":              "universityofadelaide/shepherd-drupal-project",
     "description":       "Project template for Shepherd Drupal 8 projects with composer.",
     "type":              "project",
-    "license":           "GPL-2.0+",
+    "license":           "GPL-2.0-or-later",
     "authors":           [
         {
             "name": "",
@@ -20,19 +20,19 @@
         }
     ],
     "require":           {
-        "composer/installers":                           "^1.2",
+        "composer/installers":                           "^1.6",
         "cweagans/composer-patches":                     "^1.6",
-        "drupal-composer/drupal-scaffold":               "^2.2",
-        "universityofadelaide/shepherd-drupal-scaffold": "~2.0",
-        "drupal/console":                                "^1.0.2",
-        "drupal/core":                                   "~8.5",
+        "drupal-composer/drupal-scaffold":               "^2.5",
+        "universityofadelaide/shepherd-drupal-scaffold": "~2.2",
+        "drupal/console":                                "^1.8.0",
+        "drupal/core":                                   "~8.6.1",
         "drupal/drush-cmi-tools":                        "dev-8.x-2.x",
-        "drush/drush":                                   "^9.0.0",
-        "webflo/drupal-finder":                          "^1.0.0",
+        "drush/drush":                                   "^9.4.0",
+        "webflo/drupal-finder":                          "^1.1.0",
         "webmozart/path-util":                           "^2.3"
     },
     "require-dev":       {
-        "webflo/drupal-core-require-dev": "~8.5.0"
+        "webflo/drupal-core-require-dev": "~8.6.1"
     },
     "conflict":          {
         "drupal/drupal": "*"
