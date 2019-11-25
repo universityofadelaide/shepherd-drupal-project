@@ -36,6 +36,7 @@ web/sites/*/services.yml
 
 # Extras
 dsh
+dsh_bash
 RoboFileBase.php
 .DS_Store
 .bash_history
