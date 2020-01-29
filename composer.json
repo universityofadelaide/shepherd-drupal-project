@@ -29,7 +29,8 @@
         "drupal/drush_cmi_tools":                        "dev-8.x-2.x",
         "drush/drush":                                   "^9.4.0",
         "webflo/drupal-finder":                          "^1.1.0",
-        "webmozart/path-util":                           "^2.3"
+        "webmozart/path-util":                           "^2.3",
+        "zaporylie/composer-drupal-optimizations":       "^1.0"
     },
     "require-dev":       {
         "drupal/core-dev": "~8.8"
@@ -51,7 +52,11 @@
             "@shepherd-scaffold"
         ]
     },
-    "extra":             {
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "installer-paths": {
             "web/core":                     [
                 "type:drupal-core"
@@ -76,6 +81,9 @@
             "initial": {
                 "sites/default/default.services.yml": "sites/default/services.yml",
                 "sites/default/default.settings.php": "sites/default/settings.php"
+            },
+            "locations": {
+                "web-root": "web/"
             }
         }
     }
