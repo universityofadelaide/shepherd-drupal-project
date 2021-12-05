@@ -20,20 +20,21 @@
         }
     ],
     "require":           {
-        "composer/installers":                           "^1.6",
-        "cweagans/composer-patches":                     "^1.6",
-        "drupal-composer/drupal-scaffold":               "^2.5",
-        "universityofadelaide/shepherd-drupal-scaffold": "~3.6",
+        "php":                                           "^7.4",
+        "composer/installers":                           "^1.9",
+        "cweagans/composer-patches":                     "^1.7",
+        "drupal/core-composer-scaffold":                 "^8.9",
+        "universityofadelaide/shepherd-drupal-scaffold": "^4.1",
         "drupal/console":                                "^1.8.0",
-        "drupal/core":                                   "~8.8",
+	"drupal/core-recommended":                       "^8.9",
         "drupal/drush_cmi_tools":                        "dev-8.x-2.x",
-        "drush/drush":                                   "^9.4.0",
-        "webflo/drupal-finder":                          "^1.1.0",
+        "drush/drush":                                   "^9.7.0",
+        "webflo/drupal-finder":                          "^1.2",
         "webmozart/path-util":                           "^2.3",
         "zaporylie/composer-drupal-optimizations":       "^1.0"
     },
     "require-dev":       {
-        "drupal/core-dev": "~8.8"
+        "drupal/core-dev": "^8.9"
     },
     "conflict":          {
         "drupal/drupal": "*"
@@ -42,18 +43,26 @@
     "prefer-stable":     true,
     "config":            {
         "bin-dir":       "bin/",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.0"
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
     },
     "scripts":           {
-        "drupal-scaffold":   "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "shepherd-scaffold": "UniversityOfAdelaide\\ShepherdDrupalScaffold\\Plugin::scaffold",
         "post-install-cmd":  [
-            "@drupal-scaffold",
+            "@composer drupal:scaffold",
             "@shepherd-scaffold"
         ]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
         "patchLevel": {
             "drupal/core": "-p2"
         },
