@@ -1,6 +1,6 @@
 {
     "name":              "universityofadelaide/shepherd-drupal-project",
-    "description":       "Project template for Shepherd Drupal 8 projects with composer.",
+    "description":       "Project template for Shepherd Drupal 10 projects with composer.",
     "type":              "project",
     "license":           "GPL-2.0-or-later",
     "authors":           [
@@ -13,28 +13,20 @@
         {
             "type": "composer",
             "url":  "https://packages.drupal.org/8"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/previousnext/drush_cmi_tools.git"
         }
     ],
     "require":           {
-        "php":                                           "^7.4",
-        "composer/installers":                           "^1.9",
+        "php":                                           "^8.1",
+        "composer-plugin-api":                           "^2.0",
+        "composer/installers":                           "^2.0",
         "cweagans/composer-patches":                     "^1.7",
-        "drupal/core-composer-scaffold":                 "^8.9",
-        "universityofadelaide/shepherd-drupal-scaffold": "^4.1",
-        "drupal/console":                                "^1.8.0",
-	"drupal/core-recommended":                       "^8.9",
-        "drupal/drush_cmi_tools":                        "dev-8.x-2.x",
-        "drush/drush":                                   "^9.7.0",
-        "webflo/drupal-finder":                          "^1.2",
-        "webmozart/path-util":                           "^2.3",
-        "zaporylie/composer-drupal-optimizations":       "^1.0"
+        "drupal/core-composer-scaffold":                 "^10.0",
+        "universityofadelaide/shepherd-drupal-scaffold": "^6.0",
+	"drupal/core-recommended":                       "^10.0",
+        "drush/drush":                                   "^11.2"
     },
     "require-dev":       {
-        "drupal/core-dev": "^8.9"
+        "drupal/core-dev": "10.0"
     },
     "conflict":          {
         "drupal/drupal": "*"
@@ -45,20 +37,8 @@
         "bin-dir":       "bin/",
         "sort-packages": true,
         "platform": {
-            "php": "7.4.0"
+            "php": "8.1"
         }
-    },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ]
-    },
-    "scripts":           {
-        "shepherd-scaffold": "UniversityOfAdelaide\\ShepherdDrupalScaffold\\Plugin::scaffold",
-        "post-install-cmd":  [
-            "@composer drupal:scaffold",
-            "@shepherd-scaffold"
-        ]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
@@ -87,12 +67,18 @@
             ]
         },
         "drupal-scaffold": {
-            "initial": {
-                "sites/default/default.services.yml": "sites/default/services.yml",
-                "sites/default/default.settings.php": "sites/default/settings.php"
-            },
+            "allowed-packages": [
+                "drupal/core"
+            ],
             "locations": {
-                "web-root": "web/"
+                "web-root": "./web/"
+            },
+            "file-mapping": {
+                "[web-root]/sites/default/settings.php": {
+                    "mode": "replace",
+                    "path": "web/core/assets/scaffold/files/default.settings.php",
+                    "overwrite": false
+                }
             }
         }
     }
